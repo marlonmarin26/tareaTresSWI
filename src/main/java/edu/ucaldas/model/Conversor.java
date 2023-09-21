@@ -15,13 +15,13 @@ public class Conversor {
     /**
      * Lee datos desde un archivo CSV y los almacena en una lista de objetos Estudiante.
      *
-     * @param csvFilePath Ruta del archivo CSV que se va a leer.
+     * @param rutaArchivo Ruta del archivo CSV que se va a leer.
      * @return Lista de objetos Estudiante con los datos del archivo CSV.
      */
-    public List<Estudiante> leerDatosDesdeCSV(String csvFilePath) {
+    public List<Estudiante> leerDatosDesdeCSV(String rutaArchivo) {
         List<Estudiante> estudiantes = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] campos = line.split(",");
@@ -45,11 +45,11 @@ public class Conversor {
     /**
      * Convierte los datos desde un archivo CSV a un archivo JSON.
      *
-     * @param csvFilePath Ruta del archivo CSV que se va a convertir.
+     * @param rutaArchivo Ruta del archivo CSV que se va a convertir.
      */
-    public void convertirCSVaJSON(String csvFilePath) {
-        List<Estudiante> estudiantes = leerDatosDesdeCSV(csvFilePath);
-        String jsonFilePath = csvFilePath.replaceFirst("[.][^.]+$", ".json"); // Calcular la ruta del archivo JSON
+    public void convertirCSVaJSON(String rutaArchivo) {
+        List<Estudiante> estudiantes = leerDatosDesdeCSV(rutaArchivo);
+        String jsonFilePath = rutaArchivo.replaceFirst("[.][^.]+$", ".json"); // Calcular la ruta del archivo JSON
         convertirYGuardarComoJSON(estudiantes, jsonFilePath);
     }
 

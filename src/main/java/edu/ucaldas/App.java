@@ -11,12 +11,12 @@ public class App {
 
         System.out.println("Bienvenido al conversor de CSV a JSON.");
         System.out.print("Ingrese la ruta del archivo CSV: ");
-        String csvFilePath = scanner.nextLine();
+        String rutaArchivo = scanner.nextLine();
 
         scanner.close(); // Cierra el scanner cuando ya no se necesita
 
         Conversor converter = new Conversor();
-        converter.convertirCSVaJSON(csvFilePath);
+        converter.convertirCSVaJSON(rutaArchivo);
     }
 }
 

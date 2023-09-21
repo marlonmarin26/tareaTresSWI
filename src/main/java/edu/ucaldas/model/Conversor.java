@@ -49,17 +49,17 @@ public class Conversor {
      */
     public void convertirCSVaJSON(String rutaArchivo) {
         List<Estudiante> estudiantes = leerDatosDesdeCSV(rutaArchivo);
-        String jsonFilePath = rutaArchivo.replaceFirst("[.][^.]+$", ".json"); // Calcular la ruta del archivo JSON
-        convertirYGuardarComoJSON(estudiantes, jsonFilePath);
+        String rutaJson = rutaArchivo.replaceFirst("[.][^.]+$", ".json"); // Calcular la ruta del archivo JSON
+        convertirYGuardarComoJSON(estudiantes, rutaJson);
     }
 
     /**
      * Convierte una lista de objetos Estudiante a un formato JSON y guarda los datos en un archivo.
      *
      * @param estudiantes  Lista de objetos Estudiante.
-     * @param jsonFilePath Ruta del archivo JSON en el que se guardarán los datos.
+     * @param rutaJson Ruta del archivo JSON en el que se guardarán los datos.
      */
-    public void convertirYGuardarComoJSON(List<Estudiante> estudiantes, String jsonFilePath) {
+    public void convertirYGuardarComoJSON(List<Estudiante> estudiantes, String rutaJson) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[\n");
 
@@ -80,9 +80,9 @@ public class Conversor {
 
         jsonBuilder.append("]\n");
 
-        try (FileWriter fileWriter = new FileWriter(jsonFilePath)) {
+        try (FileWriter fileWriter = new FileWriter(rutaJson)) {
             fileWriter.write(jsonBuilder.toString());
-            System.out.println("Datos convertidos y guardados en " + jsonFilePath);
+            System.out.println("Datos convertidos y guardados en " + rutaJson);
         } catch (IOException e) {
             System.err.println("Error al escribir en el archivo JSON: " + e.getMessage());
             System.exit(1); // Salir con código de error
